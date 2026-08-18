@@ -1,0 +1,17 @@
+services:
+  sublinkpro:
+    image: zerodeng/sublink-pro:latest
+    container_name: sublinkpro
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./db:/app/db
+      - ./template:/app/template
+      - ./logs:/app/logs
+    environment:
+      - SUBLINK_PORT=8000
+      - SUBLINK_LOG_LEVEL=info
+      - SUBLINK_CAPTCHA_MODE=1
+      - SUBLINK_EXPIRE_DAYS=14
+      - SUBLINK_ADMIN_PASSWORD=<CHANGE_ME>
+    restart: unless-stopped
